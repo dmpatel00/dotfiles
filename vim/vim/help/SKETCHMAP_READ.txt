@@ -1,0 +1,28 @@
+****************************************
+Short helpfile for action SKETCHMAP_READ
+****************************************
+
+The following arguments are compulsory: 
+
+      HIGH_DIM_FUNCTION - ( default=as in input action ) the parameters of the 
+                          switching function in the high dimensional space 
+       LOW_DIM_FUNCTION - ( default=as in input action ) the parameters of the 
+                          switching function in the low dimensional space 
+               MIXPARAM - ( default=0.0 ) the amount of the pure distances to mix 
+                          into the stress function 
+                   TYPE - ( default=OPTIMAL-FAST ) the manner in which distances are 
+                          calculated. More information on the different metrics that are 
+                          available in PLUMED can be found in the section of the manual on \ref 
+                          dists 
+              REFERENCE - the file containing the sketch-map projection 
+               PROPERTY - the property to be used in the index. This should be in the 
+                          REMARK of the reference 
+
+In addition you may use the following options: 
+
+                 SERIAL - ( default=off ) do the calculation in serial. Do not use 
+                          MPI 
+                 LOWMEM - ( default=off ) lower the memory requirements 
+         DISABLE_CHECKS - ( default=off ) disable checks on reference input 
+                          structures. 
+

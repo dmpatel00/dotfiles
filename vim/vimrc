@@ -1,0 +1,6 @@
+set number
+filetype plugin indent on
+let &t_SI = "\e[6 q"
+let &t_EI = "\e[2 q"
+" autocmd InsertEnter * set cursorline
+" autocmd InsertLeave * set nocursorline

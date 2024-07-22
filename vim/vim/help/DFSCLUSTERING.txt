@@ -1,0 +1,26 @@
+****************************************
+Short helpfile for action DFSCLUSTERING
+****************************************
+
+The following arguments are compulsory: 
+
+                 MATRIX - the action that calculates the adjacency matrix vessel we 
+                          would like to analyze 
+             MAXCONNECT - ( default=0 ) maximum number of connections that can be 
+                          formed by any given node in the graph. By default this is set 
+                          equal to zero and the number of connections is set equal to the 
+                          number of nodes. You only really need to set this if you are 
+                          working with a very large system and memory is at a premium 
+
+In addition you may use the following options: 
+
+  NUMERICAL_DERIVATIVES - ( default=off ) calculate the derivatives for these 
+                          quantities numerically 
+                  NOPBC - ( default=off ) ignore the periodic boundary conditions 
+                          when calculating distances 
+                 SERIAL - ( default=off ) do the calculation in serial. Do not use 
+                          MPI 
+                 LOWMEM - ( default=off ) lower the memory requirements 
+                TIMINGS - ( default=off ) output information on the timings of the 
+                          various parts of the calculation 
+

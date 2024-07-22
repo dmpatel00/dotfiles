@@ -1,0 +1,33 @@
+****************************************
+Short helpfile for action GRADIENT
+****************************************
+The input trajectory can be in any of the following formats: 
+
+                 ORIGIN - we will use the position of this atom as the origin in our 
+                          calculation. For more information on how to specify lists of atoms see 
+                          \ref Group 
+
+The following arguments are compulsory: 
+
+                   DATA - The multicolvar that calculates the set of base quantities 
+                          that we are interested in 
+                    DIR - ( default=xyz ) the directions in which we are calculating 
+                          the gradient. Should be x, y, z, xy, xz, yz or xyz 
+                  NBINS - number of bins to use in each direction for the calculation 
+                          of the gradient 
+                  SIGMA - ( default=1.0 ) the width of the function to be used for 
+                          kernel density estimation 
+                 KERNEL - ( default=gaussian ) the type of kernel function to be used 
+
+In addition you may use the following options: 
+
+  NUMERICAL_DERIVATIVES - ( default=off ) calculate the derivatives for these 
+                          quantities numerically 
+                  NOPBC - ( default=off ) ignore the periodic boundary conditions 
+                          when calculating distances 
+                 SERIAL - ( default=off ) do the calculation in serial. Do not use 
+                          MPI 
+                 LOWMEM - ( default=off ) lower the memory requirements 
+                TIMINGS - ( default=off ) output information on the timings of the 
+                          various parts of the calculation 
+

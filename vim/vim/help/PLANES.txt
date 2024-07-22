@@ -1,0 +1,35 @@
+****************************************
+Short helpfile for action PLANES
+****************************************
+The input trajectory can be in any of the following formats: 
+
+                    MOL - The numerical indices of the atoms in the molecule. If 
+                          three atoms are specified the orientation of the molecule is 
+                          taken as the normal to the plane containing the vector connecting 
+                          the first and second atoms and the vector connecting the second 
+                          and third atoms. If four atoms are specified the orientation of 
+                          the molecule is taken as the normal to the plane containing the 
+                          vector connecting the first and second atoms and the vector 
+                          connecting the third and fourth atoms. The molecule is always assumed 
+                          to lie at the geometric center for the three/four atoms.. You 
+                          can use multiple instances of this keyword i.e. MOL1, MOL2, 
+                          MOL3... 
+
+The following options are available
+
+  NUMERICAL_DERIVATIVES - ( default=off ) calculate the derivatives for these 
+                          quantities numerically 
+                  NOPBC - ( default=off ) ignore the periodic boundary conditions 
+                          when calculating distances 
+                 SERIAL - ( default=off ) do the calculation in serial. Do not use 
+                          MPI 
+                 LOWMEM - ( default=off ) lower the memory requirements 
+                TIMINGS - ( default=off ) output information on the timings of the 
+                          various parts of the calculation 
+                  VMEAN - calculate the norm of the mean vector. The final value can 
+                          be referenced using <em>label</em>.vmean. You can use multiple 
+                          instances of this keyword i.e. VMEAN1, VMEAN2, VMEAN3... The 
+                          corresponding values are then referenced using <em>label</em>.vmean-1, 
+                          <em>label</em>.vmean-2, <em>label</em>.vmean-3... 
+
+

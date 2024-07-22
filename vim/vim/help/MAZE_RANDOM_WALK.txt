@@ -1,0 +1,35 @@
+****************************************
+Short helpfile for action MAZE_RANDOM_WALK
+****************************************
+The input trajectory can be in any of the following formats: 
+
+                 LIGAND - Indices of ligand atoms.. For more information on how to 
+                          specify lists of atoms see \ref Group 
+                PROTEIN - Indices of protein atoms.. For more information on how to 
+                          specify lists of atoms see \ref Group 
+
+The following arguments are compulsory: 
+
+       OPTIMIZER_STRIDE - Optimizer stride. Sets up a callback function that launches 
+                          the optimization process every OPTIMIZER_STRIDE. 
+
+In addition you may use the following options: 
+
+  NUMERICAL_DERIVATIVES - ( default=off ) calculate the derivatives for these 
+                          quantities numerically 
+                  NOPBC - ( default=off ) ignore the periodic boundary conditions 
+                          when calculating distances 
+                 SERIAL - ( default=off ) Perform the simulation in serial -- used 
+                          only for debugging purposes, should not be used otherwise. 
+                   PAIR - ( default=off ) Pair only the 1st element of the 1st group 
+                          with the 1st element in the second, etc. 
+                  NLIST - ( default=off ) Use a neighbor list of ligand-protein atom 
+                          pairs to speed up the calculating of the distances. 
+              NL_CUTOFF - Neighbor list cut-off for the distances of ligand-protein 
+                          atom pairs. 
+              NL_STRIDE - Update stride for the ligand-protein atom pairs in the 
+                          neighbor list. 
+                   LOSS - Loss function describing ligand-protein interactions 
+                          required by every optimizer. 
+
+

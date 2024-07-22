@@ -1,0 +1,31 @@
+****************************************
+Short helpfile for action SKETCHMAP_SMACOF
+****************************************
+The input trajectory can be in any of the following formats: 
+
+   USE_OUTPUT_DATA_FROM - use the output of the analysis performed by this object as 
+                          input to your new analysis object 
+
+The following arguments are compulsory: 
+
+      HIGH_DIM_FUNCTION - ( default=as in input action ) the parameters of the 
+                          switching function in the high dimensional space 
+       LOW_DIM_FUNCTION - ( default=as in input action ) the parameters of the 
+                          switching function in the low dimensional space 
+               MIXPARAM - ( default=0.0 ) the amount of the pure distances to mix 
+                          into the stress function 
+             SMACOF_TOL - ( default=1E-4 ) the tolerance for each SMACOF cycle 
+          SMACOF_MAXCYC - ( default=1000 ) maximum number of optimization cycles for 
+                          SMACOF algorithm 
+               SMAP_TOL - ( default=1E-4 ) the tolerance for sketch-map 
+            SMAP_MAXCYC - ( default=100 ) maximum number of optimization cycles for 
+                          iterative sketch-map algorithm 
+       REGULARISE_PARAM - ( default=0.001 ) this is used to ensure that we don't 
+                          divide by zero when updating weights 
+
+In addition you may use the following options: 
+
+                 SERIAL - ( default=off ) do the calculation in serial. Do not use 
+                          MPI 
+                 LOWMEM - ( default=off ) lower the memory requirements 
+

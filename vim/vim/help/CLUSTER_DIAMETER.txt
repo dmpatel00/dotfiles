@@ -1,0 +1,23 @@
+****************************************
+Short helpfile for action CLUSTER_DIAMETER
+****************************************
+
+The following arguments are compulsory: 
+
+               CLUSTERS - the label of the action that does the clustering 
+                CLUSTER - ( default=1 ) which cluster would you like to look at 1 is 
+                          the largest cluster, 2 is the second largest, 3 is the the 
+                          third largest and so on. 
+
+In addition you may use the following options: 
+
+  NUMERICAL_DERIVATIVES - ( default=off ) calculate the derivatives for these 
+                          quantities numerically 
+                  NOPBC - ( default=off ) ignore the periodic boundary conditions 
+                          when calculating distances 
+                 SERIAL - ( default=off ) do the calculation in serial. Do not use 
+                          MPI 
+                 LOWMEM - ( default=off ) lower the memory requirements 
+                TIMINGS - ( default=off ) output information on the timings of the 
+                          various parts of the calculation 
+

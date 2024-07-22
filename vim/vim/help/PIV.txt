@@ -1,0 +1,50 @@
+****************************************
+Short helpfile for action PIV
+****************************************
+
+The following arguments are compulsory: 
+
+                 SWITCH - The switching functions parameter.You should specify a 
+                          Switching function for all PIV blocks.Details of the various 
+                          switching functions you can use are provided on \ref 
+                          switchingfunction.. You can use multiple instances of this keyword i.e. 
+                          SWITCH1, SWITCH2, SWITCH3... 
+              PRECISION - the precision for approximating reals with integers in 
+                          sorting. 
+               REF_FILE - PDB file name that contains the \f$i\f$th reference 
+                          structure. 
+               PIVATOMS - Number of atoms to use for PIV. 
+                   SORT - Whether to sort or not the PIV block. 
+              ATOMTYPES - The atom types to use for PIV. 
+
+In addition you may use the following options: 
+
+  NUMERICAL_DERIVATIVES - ( default=off ) calculate the derivatives for these 
+                          quantities numerically 
+                  NOPBC - ( default=off ) ignore the periodic boundary conditions 
+                          when calculating distances 
+                   TEST - ( default=off ) Print the actual and reference PIV and exit 
+                    COM - ( default=off ) Use centers of mass of groups of atoms 
+                          instead of atoms as specified in the Pdb file 
+              ONLYCROSS - ( default=off ) Use only cross-terms (A-B, A-C, B-C, ...) 
+                          in PIV 
+             ONLYDIRECT - ( default=off ) Use only direct-terms (A-A, B-B, C-C, ...) 
+                          in PIV 
+            DERIVATIVES - ( default=off ) Activate the calculation of the PIV for 
+                          every class (needed for numerical derivatives). 
+                  NLIST - ( default=off ) Use a neighbor list for distance 
+                          calculations. 
+                 SERIAL - ( default=off ) Perform the calculation in serial - for 
+                          debug purpose 
+                  TIMER - ( default=off ) Perform timing analysis on heavy loops. 
+                SFACTOR - Scale the PIV-distance by such block-specific factor 
+                 VOLUME - Scale atom-atom distances by the cubic root of the cell 
+                          volume. The input volume is used to scale the R_0 value of the 
+                          switching function. 
+              UPDATEPIV - Frequency (in steps) at which the PIV is updated. 
+              NL_CUTOFF - Neighbor lists cutoff. 
+              NL_STRIDE - Update neighbor lists every NL_STRIDE steps. 
+                NL_SKIN - The maximum atom displacement tolerated for the neighbor 
+                          lists update. 
+
+

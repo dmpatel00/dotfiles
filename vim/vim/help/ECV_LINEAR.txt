@@ -1,0 +1,27 @@
+****************************************
+Short helpfile for action ECV_LINEAR
+****************************************
+
+The following arguments are compulsory: 
+
+                   TEMP - ( default=-1 ) temperature. If not specified tries to get 
+                          it from MD engine 
+                    ARG - the label of the Hamiltonian difference. 
+                 LAMBDA - ( default=0 ) the lambda at which the underlying simulation 
+                          runs 
+
+In addition you may use the following options: 
+
+  NUMERICAL_DERIVATIVES - ( default=off ) calculate the derivatives for these 
+                          quantities numerically 
+          DIMENSIONLESS - ( default=off ) ARG is considered dimensionless rather than 
+                          an energy, thus is not multiplied by \f$\beta\f$ 
+           GEOM_SPACING - ( default=off ) use geometrical spacing in lambda instead 
+                          of linear spacing 
+             LAMBDA_MIN - ( default=0 ) the minimum of the lambda range 
+             LAMBDA_MAX - ( default=1 ) the maximum of the lambda range 
+           LAMBDA_STEPS - uniformly place the lambda values, for a total of 
+                          LAMBDA_STEPS 
+         LAMBDA_SET_ALL - manually set all the lamdbas 
+
+

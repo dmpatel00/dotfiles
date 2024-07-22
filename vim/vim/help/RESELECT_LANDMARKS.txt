@@ -1,0 +1,23 @@
+****************************************
+Short helpfile for action RESELECT_LANDMARKS
+****************************************
+The input trajectory can be in any of the following formats: 
+
+   USE_OUTPUT_DATA_FROM - use the output of the analysis performed by this object as 
+                          input to your new analysis object 
+
+The following arguments are compulsory: 
+
+              LANDMARKS - the action that selects the landmarks that you want to 
+                          reselect using this action 
+
+In addition you may use the following options: 
+
+                 SERIAL - ( default=off ) do the calculation in serial. Do not use 
+                          MPI 
+                 LOWMEM - ( default=off ) lower the memory requirements 
+              NOVORONOI - ( default=off ) do not do a Voronoi analysis of the data to 
+                          determine weights of final points 
+         IGNORE_WEIGHTS - ( default=off ) ignore the weights in the underlying 
+                          analysis object 
+

@@ -1,0 +1,36 @@
+****************************************
+Short helpfile for action MOLECULES
+****************************************
+The input trajectory can be in any of the following formats: 
+
+                    MOL - The numerical indices of the atoms in the molecule. The 
+                          orientation of the molecule is equal to the vector connecting the first 
+                          two atoms specified. If a third atom is specified its position 
+                          is used to specify where the molecule is. If a third atom is 
+                          not present the molecule is assumed to be at the center of the 
+                          vector connecting the first two atoms.. You can use multiple 
+                          instances of this keyword i.e. MOL1, MOL2, MOL3... 
+
+The following options are available
+
+  NUMERICAL_DERIVATIVES - ( default=off ) calculate the derivatives for these 
+                          quantities numerically 
+                  NOPBC - ( default=off ) ignore the periodic boundary conditions 
+                          when calculating distances 
+                 SERIAL - ( default=off ) do the calculation in serial. Do not use 
+                          MPI 
+                 LOWMEM - ( default=off ) lower the memory requirements 
+                TIMINGS - ( default=off ) output information on the timings of the 
+                          various parts of the calculation 
+                   MEAN - take the mean of these variables. The final value can be 
+                          referenced using <em>label</em>.mean. You can use multiple instances 
+                          of this keyword i.e. MEAN1, MEAN2, MEAN3... The corresponding 
+                          values are then referenced using <em>label</em>.mean-1, 
+                          <em>label</em>.mean-2, <em>label</em>.mean-3... 
+                  VMEAN - calculate the norm of the mean vector. The final value can 
+                          be referenced using <em>label</em>.vmean. You can use multiple 
+                          instances of this keyword i.e. VMEAN1, VMEAN2, VMEAN3... The 
+                          corresponding values are then referenced using <em>label</em>.vmean-1, 
+                          <em>label</em>.vmean-2, <em>label</em>.vmean-3... 
+
+

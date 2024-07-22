@@ -1,0 +1,34 @@
+****************************************
+Short helpfile for action TD_GRID
+****************************************
+
+The following arguments are compulsory: 
+
+                   FILE - The name of the external grid file to be used as a target 
+                          distribution. 
+
+In addition you may use the following options: 
+
+           ZERO_OUTSIDE - ( default=off ) By default the target distribution is 
+                          continuous such that values outside the boundary of the external grid 
+                          file are the same as at the boundary. This can be changed by 
+                          using this flag which will make values outside to be taken as 
+                          zero. 
+       DO_NOT_NORMALIZE - ( default=off ) By default the target distribution from the 
+                          external grid is always normalized inside the code. You can use this 
+                          flag to disable this normalization. However, be warned that this 
+                          will generally lead to the wrong behavior if the distribution 
+                          from the external grid is not properly normalized to 1. 
+          SHIFT_TO_ZERO - ( default=off ) Shift the minimum value of the target 
+                          distribution to zero. This can for example be used to avoid negative 
+                          values in the target distribution. If this option is active the 
+                          distribution will be automatically normalized. 
+                  SHIFT - Shift the grid read in by some constant value. Due to 
+                          normalization the final shift in the target distribution will generally 
+                          not be the same as the value given here 
+    WELLTEMPERED_FACTOR - Broaden the target distribution such that it is taken as 
+                          [p(s)]^(1/gamma) where gamma is the well tempered factor given here. If this 
+                          option is active the distribution will be automatically 
+                          normalized. 
+
+

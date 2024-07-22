@@ -1,0 +1,7 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhist_cnt =5
+let g:netrw_dirhist_1='/home/cat/dmapa/gpaw/alkalinebarriers/model/AlkalineHER/data'
+let g:netrw_dirhist_2='/home/cat/dmapa/bin'
+let g:netrw_dirhist_3='/home/cat/geokast/.ipython'
+let g:netrw_dirhist_4='/home/cat/dmapa/.keras'
+let g:netrw_dirhist_5='/home/cat/dmapa/.lmod.d'

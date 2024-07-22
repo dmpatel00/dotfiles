@@ -1,0 +1,18 @@
+****************************************
+Short helpfile for action VES_OUTPUT_FES
+****************************************
+
+The following arguments are compulsory: 
+
+                   BIAS - the label of the VES bias for to output the free energy 
+                          surfaces and the bias files 
+           COEFFS_INPUT - the name of input coefficient file 
+            BIAS_OUTPUT - how often the bias(es) should be written out to file. Note 
+                          that the value is given in terms of coefficient iterations. 
+             FES_OUTPUT - how often the FES(s) should be written out to file. Note 
+                          that the value is given in terms of coefficient iterations. 
+        FES_PROJ_OUTPUT - how often the projections of the FES(s) should be written 
+                          out to file. Note that the value is given in terms of 
+                          coefficient iterations. 
+
+

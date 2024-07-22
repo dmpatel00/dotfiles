@@ -1,0 +1,39 @@
+****************************************
+Short helpfile for action MEMFUSIONP
+****************************************
+The input trajectory can be in any of the following formats: 
+
+              UMEMBRANE - all the beads of the upper membrane. For more information 
+                          on how to specify lists of atoms see \ref Group 
+              LMEMBRANE - all the beads of the lower membrane. For more information 
+                          on how to specify lists of atoms see \ref Group 
+                  TAILS - all the tail beads of the system. For more information on 
+                          how to specify lists of atoms see \ref Group 
+
+The following arguments are compulsory: 
+
+                  NSMEM - the number of slices of the membrane fusion cylinder in 
+                          such a way that when the bilayers are flat and parallel the CV 
+                          is equal to 0.2. 
+
+In addition you may use the following options: 
+
+  NUMERICAL_DERIVATIVES - ( default=off ) calculate the derivatives for these 
+                          quantities numerically 
+                  NOPBC - ( default=off ) ignore the periodic boundary conditions 
+                          when calculating distances 
+                  DSMEM - ( default=0.1) thickness of the slices of the membrane 
+                          fusion cylinder. 
+                   HMEM - ( default=0.25 ) parameter of the step function θ(x,h) for 
+                          the membrane fusion. 
+                RCYLMEM - ( default=1.75 ) the radius of the membrane fusion 
+                          cylinder. 
+                ZETAMEM - ( default=0.5 ) occupation factor. 
+      ONEOVERS2C2CUTOFF - ( default=500 ) cut off large values for the derivative of 
+                          the atan2 function. 
+                   XCYL - X coordinate of the fixed cylinder, if not present this 
+                          will be calculated. 
+                   YCYL - Y coordinate of the fixed cylinder, if not present this 
+                          will be calculated. 
+
+

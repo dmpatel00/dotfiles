@@ -1,0 +1,20 @@
+****************************************
+Short helpfile for action DUMPMASSCHARGE
+****************************************
+The input trajectory can be in any of the following formats: 
+
+                  ATOMS - the atom indices whose charges and masses you would like to 
+                          print out. For more information on how to specify lists of atoms 
+                          see \ref Group 
+
+The following arguments are compulsory: 
+
+                 STRIDE - ( default=1 ) the frequency with which the atoms should be 
+                          output 
+                   FILE - file on which to output charges and masses. 
+
+In addition you may use the following options: 
+
+            ONLY_MASSES - ( default=off ) Only output masses to file 
+           ONLY_CHARGES - ( default=off ) Only output charges to file 
+

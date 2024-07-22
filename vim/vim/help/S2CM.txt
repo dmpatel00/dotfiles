@@ -1,0 +1,37 @@
+****************************************
+Short helpfile for action S2CM
+****************************************
+The input trajectory can be in any of the following formats: 
+
+            METHYL_ATOM - the methyl carbon atom of the residue (i). For more 
+                          information on how to specify lists of atoms see \ref Group 
+               NH_ATOMS - the hydrogen atom of the NH group of the residue (i) and 
+                          carbonyl oxygen of the preceding residue (i-1). For more information 
+                          on how to specify lists of atoms see \ref Group 
+            HEAVY_ATOMS - the heavy atoms to be included in the calculation. For more 
+                          information on how to specify lists of atoms see \ref Group 
+
+The following arguments are compulsory: 
+
+                  R_EFF - the effective distance, r_eff in the equation, given in nm. 
+            PREFACTOR_A - the prefactor, a in the equation 
+             EXPONENT_B - the exponent, b in the equation 
+               OFFSET_C - the offset, c in the equation 
+                    N_I - n_i in the equation 
+
+In addition you may use the following options: 
+
+  NUMERICAL_DERIVATIVES - ( default=off ) calculate the derivatives for these 
+                          quantities numerically 
+                  NOPBC - ( default=off ) ignore the periodic boundary conditions 
+                          when calculating distances 
+                 SERIAL - ( default=off ) Perform the calculation in serial - for 
+                          debug purpose 
+                  NLIST - ( default=off ) Use a neighbour list to speed up the 
+                          calculation 
+              NL_CUTOFF - The cutoff for the neighbour list 
+              NL_STRIDE - The frequency with which we are updating the atoms in the 
+                          neighbour list 
+                R_SHIFT - shift all distances by given amount 
+
+

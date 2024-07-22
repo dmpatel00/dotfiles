@@ -1,0 +1,46 @@
+****************************************
+Short helpfile for action ANN
+****************************************
+
+The following arguments are compulsory: 
+
+               PERIODIC - if the output of your function is periodic then you should 
+                          specify the periodicity of the function. If the output is not 
+                          periodic you must state this using PERIODIC=NO 
+             NUM_LAYERS - number of layers of the neural network 
+              NUM_NODES - numbers of nodes in each layer of the neural network 
+            ACTIVATIONS - activation functions for the neural network 
+
+In addition you may use the following options: 
+
+  NUMERICAL_DERIVATIVES - ( default=off ) calculate the derivatives for these 
+                          quantities numerically 
+                    ARG - the input for this action is the scalar output from one or 
+                          more other actions. The particular scalars that you will use are 
+                          referenced using the label of the action. If the label appears on its 
+                          own then it is assumed that the Action calculates a single 
+                          scalar value. The value of this scalar is thus used as the input 
+                          to this new action. If * or *.* appears the scalars calculated 
+                          by all the proceeding actions in the input file are taken. 
+                          Some actions have multi-component outputs and each component of 
+                          the output has a specific label. For example a \ref DISTANCE 
+                          action labelled dist may have three components x, y and z. To take 
+                          just the x component you should use dist.x, if you wish to take 
+                          all three components then use dist.*.More information on the 
+                          referencing of Actions can be found in the section of the manual on the 
+                          PLUMED \ref Syntax. Scalar values can also be referenced using 
+                          POSIX regular expressions as detailed in the section on \ref 
+                          Regex. To use this feature you you must compile PLUMED with the 
+                          appropriate flag.. You can use multiple instances of this keyword i.e. 
+                          ARG1, ARG2, ARG3... 
+                WEIGHTS - flattened weight arrays connecting adjacent layers, 
+                          WEIGHTS0 represents flattened weight array connecting layer 0 and 
+                          layer 1, WEIGHTS1 represents flattened weight array connecting 
+                          layer 1 and layer 2, .... You can use multiple instances of this 
+                          keyword i.e. WEIGHTS1, WEIGHTS2, WEIGHTS3... 
+                 BIASES - bias array for each layer of the neural network, BIASES0 
+                          represents bias array for layer 1, BIASES1 represents bias array for 
+                          layer 2, .... You can use multiple instances of this keyword i.e. 
+                          BIASES1, BIASES2, BIASES3... 
+
+

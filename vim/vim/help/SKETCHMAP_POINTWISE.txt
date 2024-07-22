@@ -1,0 +1,33 @@
+****************************************
+Short helpfile for action SKETCHMAP_POINTWISE
+****************************************
+The input trajectory can be in any of the following formats: 
+
+   USE_OUTPUT_DATA_FROM - use the output of the analysis performed by this object as 
+                          input to your new analysis object 
+
+The following arguments are compulsory: 
+
+      HIGH_DIM_FUNCTION - ( default=as in input action ) the parameters of the 
+                          switching function in the high dimensional space 
+       LOW_DIM_FUNCTION - ( default=as in input action ) the parameters of the 
+                          switching function in the low dimensional space 
+               MIXPARAM - ( default=0.0 ) the amount of the pure distances to mix 
+                          into the stress function 
+                NCYCLES - ( default=5 ) the number of cycles of global optimization 
+                          to attempt 
+                  CGTOL - ( default=1E-6 ) the tolerance for the conjugate gradient 
+                          minimization 
+                 BUFFER - ( default=1.1 ) grid extent for search is (max projection - 
+                          minimum projection) multiplied by this value 
+             CGRID_SIZE - ( default=10 ) number of points to use in each grid 
+                          direction 
+             FGRID_SIZE - ( default=0 ) interpolate the grid onto this number of 
+                          points -- only works in 2D 
+
+In addition you may use the following options: 
+
+                 SERIAL - ( default=off ) do the calculation in serial. Do not use 
+                          MPI 
+                 LOWMEM - ( default=off ) lower the memory requirements 
+

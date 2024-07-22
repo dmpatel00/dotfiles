@@ -1,0 +1,18 @@
+****************************************
+Short helpfile for action WHAM_HISTOGRAM
+****************************************
+
+The following arguments are compulsory: 
+
+                    ARG - the arguments that you would like to make the histogram for 
+                   BIAS - ( default=*.bias ) the value of the biases to use when 
+                          performing WHAM 
+                   TEMP - the temperature at which the simulation was run 
+                 STRIDE - ( default=1 ) the frequency with which the data should be 
+                          stored to perform WHAM 
+               GRID_MIN - the minimum to use for the grid 
+               GRID_MAX - the maximum to use for the grid 
+               GRID_BIN - the number of bins to use for the grid 
+              BANDWIDTH - the bandwidth for kernel density estimation 
+
+

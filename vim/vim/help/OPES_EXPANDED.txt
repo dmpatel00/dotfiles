@@ -1,0 +1,40 @@
+****************************************
+Short helpfile for action OPES_EXPANDED
+****************************************
+
+The following arguments are compulsory: 
+
+                    ARG - the label of the ECVs that define the expansion. You can 
+                          use an * to make sure all the output components of the ECVs are 
+                          used, as in the examples above 
+                   PACE - how often the bias is updated 
+      OBSERVATION_STEPS - ( default=100 ) number of unbiased initial PACE steps to 
+                          collect statistics for initialization 
+                   FILE - ( default=DELTAFS ) a file with the estimate of the 
+                          relative Delta F for each component of the target and of the global 
+                          c(t) 
+           PRINT_STRIDE - ( default=100 ) stride for printing to DELTAFS file, in 
+                          units of PACE 
+
+In addition you may use the following options: 
+
+  NUMERICAL_DERIVATIVES - ( default=off ) calculate the derivatives for these 
+                          quantities numerically 
+           STORE_STATES - ( default=off ) append to STATE_WFILE instead of ovewriting 
+                          it each time 
+              CALC_WORK - ( default=off ) calculate the total accumulated work done 
+                          by the bias since last restart 
+            WALKERS_MPI - ( default=off ) switch on MPI version of multiple walkers 
+                 SERIAL - ( default=off ) perform calculations in serial 
+                    FMT - specify format for DELTAFS file 
+            STATE_RFILE - read from this file the Delta F estimates and all the info 
+                          needed to RESTART the simulation 
+            STATE_WFILE - write to this file the Delta F estimates and all the info 
+                          needed to RESTART the simulation 
+          STATE_WSTRIDE - number of MD steps between writing the STATE_WFILE. Default 
+                          is only on CPT events (but not all MD codes set them) 
+                RESTART - allows per-action setting of restart (YES/NO/AUTO) 
+            UPDATE_FROM - Only update this action from this time 
+           UPDATE_UNTIL - Only update this action until this time 
+
+

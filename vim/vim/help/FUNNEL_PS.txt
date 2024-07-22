@@ -1,0 +1,28 @@
+****************************************
+Short helpfile for action FUNNEL_PS
+****************************************
+The input trajectory can be in any of the following formats: 
+
+                 LIGAND - This MUST be a single atom, normally the COM of the ligand. 
+                          For more information on how to specify lists of atoms see \ref 
+                          Group 
+                 ANCHOR - Closest protein atom to the ligand, picked to avoid pbc 
+                          problems during the simulation. For more information on how to 
+                          specify lists of atoms see \ref Group 
+
+The following arguments are compulsory: 
+
+              REFERENCE - a file in pdb format containing the structure you would 
+                          like to align. 
+                 POINTS - 6 values defining x, y, and z of the 2 points used to 
+                          construct the line. The order should be A_x,A_y,A_z,B_x,B_y,B_z. 
+
+In addition you may use the following options: 
+
+  NUMERICAL_DERIVATIVES - ( default=off ) calculate the derivatives for these 
+                          quantities numerically 
+                  NOPBC - ( default=off ) ignore the periodic boundary conditions 
+                          when calculating distances 
+           SQUARED-ROOT - ( default=off ) Used to initialize the creation of the 
+                          alignment variable 
+

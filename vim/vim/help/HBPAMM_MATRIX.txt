@@ -1,0 +1,66 @@
+****************************************
+Short helpfile for action HBPAMM_MATRIX
+****************************************
+The input trajectory can be in any of the following formats: 
+
+                  SITES - The list of atoms which can be part of a hydrogen bond. 
+                          When this command is used the set of atoms that can donate a 
+                          hydrogen bond is assumed to be the same as the set of atoms that can 
+                          form hydrogen bonds. The atoms involved must be specified as a 
+                          list of labels of \ref mcolv or labels of a \ref 
+                          multicolvarfunction actions. If you would just like to use the atomic positions 
+                          you can use a \ref DENSITY command to specify a group of atoms. 
+                          Specifying your atomic positions using labels of other \ref mcolv or 
+                          \ref multicolvarfunction commands is useful, however, as you can 
+                          then exploit a much wider variety of functions of the contact 
+                          matrix as described in \ref contactmatrix 
+                 DONORS - The list of atoms which can donate a hydrogen bond. The 
+                          atoms involved must be specified as a list of labels of \ref 
+                          mcolv or labels of a \ref multicolvarfunction actions. If you 
+                          would just like to use the atomic positions you can use a \ref 
+                          DENSITY command to specify a group of atoms. Specifying your atomic 
+                          positions using labels of other \ref mcolv or \ref 
+                          multicolvarfunction commands is useful, however, as you can then exploit a much 
+                          wider variety of functions of the contact matrix as described in 
+                          \ref contactmatrix 
+              ACCEPTORS - The list of atoms which can accept a hydrogen bond. The 
+                          atoms involved must be specified as a list of labels of \ref 
+                          mcolv or labels of a \ref multicolvarfunction actions. If you 
+                          would just like to use the atomic positions you can use a \ref 
+                          DENSITY command to specify a group of atoms. Specifying your atomic 
+                          positions using labels of other \ref mcolv or \ref 
+                          multicolvarfunction commands is useful, however, as you can then exploit a much 
+                          wider variety of functions of the contact matrix as described in 
+                          \ref contactmatrix 
+              HYDROGENS - The list of hydrogen atoms that can form part of a hydrogen 
+                          bond. The atoms must be specified using a comma separated list, 
+                          an index range or by using a \ref GROUP. For more information 
+                          on how to specify lists of atoms see \ref Group 
+
+The following arguments are compulsory: 
+
+               CLUSTERS - the name of the file that contains the definitions of all 
+                          the kernels for PAMM. You can use multiple instances of this 
+                          keyword i.e. CLUSTERS1, CLUSTERS2, CLUSTERS3... 
+             REGULARISE - ( default=0.001 ) don't allow the denominator to be smaller 
+                          then this value 
+
+In addition you may use the following options: 
+
+  NUMERICAL_DERIVATIVES - ( default=off ) calculate the derivatives for these 
+                          quantities numerically 
+                  NOPBC - ( default=off ) ignore the periodic boundary conditions 
+                          when calculating distances 
+                 SERIAL - ( default=off ) do the calculation in serial. Do not use 
+                          MPI 
+                TIMINGS - ( default=off ) output information on the timings of the 
+                          various parts of the calculation 
+                HIGHMEM - ( default=off ) use a more memory intensive version of this 
+                          collective variable 
+                    SUM - calculate the sum of all the quantities. The final value 
+                          can be referenced using <em>label</em>.sum. You can use 
+                          multiple instances of this keyword i.e. SUM1, SUM2, SUM3... The 
+                          corresponding values are then referenced using <em>label</em>.sum-1, 
+                          <em>label</em>.sum-2, <em>label</em>.sum-3... 
+
+

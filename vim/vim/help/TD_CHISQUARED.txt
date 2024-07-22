@@ -1,0 +1,30 @@
+****************************************
+Short helpfile for action TD_CHISQUARED
+****************************************
+
+The following arguments are compulsory: 
+
+                MINIMUM - The minimum of the chi-squared distribution. 
+                  SIGMA - The sigma parameter of the chi-squared distribution given 
+                          as a positive number. 
+                  KAPPA - The k parameter of the chi-squared distribution given as 
+                          positive integer larger than 2. 
+
+In addition you may use the following options: 
+
+          SHIFT_TO_ZERO - ( default=off ) Shift the minimum value of the target 
+                          distribution to zero. This can for example be used to avoid negative 
+                          values in the target distribution. If this option is active the 
+                          distribution will be automatically normalized. 
+              NORMALIZE - ( default=off ) Renormalized the target distribution over 
+                          the intervals on which it is defined to make sure that it is 
+                          properly normalized to 1. In most cases this should not be needed as 
+                          the target distributions should be normalized. The code will 
+                          issue a warning (but still run) if this is needed for some 
+                          reason. 
+    WELLTEMPERED_FACTOR - Broaden the target distribution such that it is taken as 
+                          [p(s)]^(1/gamma) where gamma is the well tempered factor given here. If this 
+                          option is active the distribution will be automatically 
+                          normalized. 
+
+

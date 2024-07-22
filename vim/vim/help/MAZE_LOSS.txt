@@ -1,0 +1,15 @@
+****************************************
+Short helpfile for action MAZE_LOSS
+****************************************
+
+The following arguments are compulsory: 
+
+                 PARAMS - Parameters for the loss function. 
+
+In addition you may use the following options: 
+
+  NUMERICAL_DERIVATIVES - ( default=off ) calculate the derivatives for these 
+                          quantities numerically 
+                  NOPBC - ( default=off ) ignore the periodic boundary conditions 
+                          when calculating distances 
+

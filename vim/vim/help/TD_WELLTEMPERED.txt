@@ -1,0 +1,8 @@
+****************************************
+Short helpfile for action TD_WELLTEMPERED
+****************************************
+
+The following arguments are compulsory: 
+
+             BIASFACTOR - The bias factor used for the well-tempered distribution. 
+

@@ -1,0 +1,21 @@
+****************************************
+Short helpfile for action SPRINT
+****************************************
+
+The following arguments are compulsory: 
+
+                 MATRIX - the action that calculates the adjacency matrix vessel we 
+                          would like to analyze 
+
+In addition you may use the following options: 
+
+  NUMERICAL_DERIVATIVES - ( default=off ) calculate the derivatives for these 
+                          quantities numerically 
+                  NOPBC - ( default=off ) ignore the periodic boundary conditions 
+                          when calculating distances 
+                 SERIAL - ( default=off ) do the calculation in serial. Do not use 
+                          MPI 
+                 LOWMEM - ( default=off ) lower the memory requirements 
+                TIMINGS - ( default=off ) output information on the timings of the 
+                          various parts of the calculation 
+

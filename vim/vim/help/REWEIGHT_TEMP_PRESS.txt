@@ -1,0 +1,12 @@
+****************************************
+Short helpfile for action REWEIGHT_TEMP_PRESS
+****************************************
+                   TEMP - the system temperature. This is not required if your MD 
+                          code passes this quantity to PLUMED 
+                 ENERGY - Energy 
+                 VOLUME - Volume 
+      REWEIGHT_PRESSURE - Reweighting pressure 
+               PRESSURE - The system pressure 
+          REWEIGHT_TEMP - Reweighting temperature 
+
+

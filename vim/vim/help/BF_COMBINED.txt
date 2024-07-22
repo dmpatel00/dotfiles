@@ -1,0 +1,16 @@
+****************************************
+Short helpfile for action BF_COMBINED
+****************************************
+
+The following arguments are compulsory: 
+
+        BASIS_FUNCTIONS - Labels of the basis functions that should be combined. Note 
+                          that the order used matters for the ordering of the basis 
+                          functions. This needs to be kept in mind when restarting from previous 
+                          coefficients. 
+
+In addition you may use the following options: 
+
+             DEBUG_INFO - ( default=off ) Print out more detailed information about 
+                          the basis set. Useful for debugging. 
+

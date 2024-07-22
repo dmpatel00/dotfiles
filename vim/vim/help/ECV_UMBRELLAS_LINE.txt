@@ -1,0 +1,44 @@
+****************************************
+Short helpfile for action ECV_UMBRELLAS_LINE
+****************************************
+
+The following arguments are compulsory: 
+
+                   TEMP - ( default=-1 ) temperature. If not specified tries to get 
+                          it from MD engine 
+                 CV_MIN - the minimum of the CV range to be explored 
+                 CV_MAX - the maximum of the CV range to be explored 
+                  SIGMA - sigma of the umbrella Gaussians 
+                SPACING - ( default=1 ) the distance between umbrellas, in units of 
+                          SIGMA 
+
+In addition you may use the following options: 
+
+  NUMERICAL_DERIVATIVES - ( default=off ) calculate the derivatives for these 
+                          quantities numerically 
+                 ADD_P0 - ( default=off ) add the unbiased Boltzmann distribution to 
+                          the target distribution, to make sure to sample it 
+        LOWER_HALF_ONLY - ( default=off ) use only the lower half of each umbrella 
+                          potentials 
+                    ARG - the input for this action is the scalar output from one or 
+                          more other actions. The particular scalars that you will use are 
+                          referenced using the label of the action. If the label appears on its 
+                          own then it is assumed that the Action calculates a single 
+                          scalar value. The value of this scalar is thus used as the input 
+                          to this new action. If * or *.* appears the scalars calculated 
+                          by all the proceeding actions in the input file are taken. 
+                          Some actions have multi-component outputs and each component of 
+                          the output has a specific label. For example a \ref DISTANCE 
+                          action labelled dist may have three components x, y and z. To take 
+                          just the x component you should use dist.x, if you wish to take 
+                          all three components then use dist.*.More information on the 
+                          referencing of Actions can be found in the section of the manual on the 
+                          PLUMED \ref Syntax. Scalar values can also be referenced using 
+                          POSIX regular expressions as detailed in the section on \ref 
+                          Regex. To use this feature you you must compile PLUMED with the 
+                          appropriate flag.. You can use multiple instances of this keyword i.e. 
+                          ARG1, ARG2, ARG3... 
+                BARRIER - a guess of the free energy barrier to be overcome (better 
+                          to stay higher than lower) 
+
+

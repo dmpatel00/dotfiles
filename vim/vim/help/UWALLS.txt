@@ -1,0 +1,31 @@
+****************************************
+Short helpfile for action UWALLS
+****************************************
+
+The following arguments are compulsory: 
+
+                   DATA - certain actions in plumed work by calculating a list of 
+                          variables and summing over them. This particular action can be used 
+                          to calculate functions of these base variables or prints them 
+                          to a file. This keyword thus takes the label of one of those 
+                          such variables as input. 
+                     AT - the radius of the sphere 
+                  KAPPA - the force constant for the wall. The k_i in the expression 
+                          for a wall. 
+                 OFFSET - ( default=0.0 ) the offset for the start of the wall. The 
+                          o_i in the expression for a wall. 
+                    EXP - ( default=2.0 ) the powers for the walls. The e_i in the 
+                          expression for a wall. 
+                    EPS - ( default=1.0 ) the values for s_i in the expression for a 
+                          wall 
+
+In addition you may use the following options: 
+
+  NUMERICAL_DERIVATIVES - ( default=off ) calculate the derivatives for these 
+                          quantities numerically 
+                 SERIAL - ( default=off ) do the calculation in serial. Do not use 
+                          MPI 
+                 LOWMEM - ( default=off ) lower the memory requirements 
+                TIMINGS - ( default=off ) output information on the timings of the 
+                          various parts of the calculation 
+
