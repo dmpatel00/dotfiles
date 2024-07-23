@@ -1,6 +1,20 @@
-set number
+" settings
+set number relativenumber
 filetype plugin indent on
-let &t_SI = "\e[6 q"
+" cursor
+let &t_SI = "\e[5 q"
 let &t_EI = "\e[2 q"
+let &t_SR = "\e[3 q"
+" line cursor
 " autocmd InsertEnter * set cursorline
 " autocmd InsertLeave * set nocursorline
+" split defaults and navigations
+set splitright
+set splitbelow
+map <C-h> <C-w>h
+map <C-j> <C-w>j
+map <C-k> <C-w>k
+map <C-l> <C-w>l
+" wild mode autocomplete filenames
+set wildmode=longest,list,full
+set wildmenu
