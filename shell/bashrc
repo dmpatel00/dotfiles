@@ -22,13 +22,16 @@ HISTSIZE=10000000
 HISTFILESIZE=10000000
 
 #Tab Complete
-bind 'set show-all-if-ambiguous on'
 #bind 'TAB:menu-complete' #terrible no vim
+#bind '"\e[Z":menu-complete-backward'
+bind 'set show-all-if-ambiguous on'
 #Load gnureadline
 module load libreadline
 export INPUTRC=/home/cat/dmapa/.inputrc
 # custom module folder
-module use /home/cat/dmapa/modules/
+module use /home/cat/projects/software/modules/all/
+# Energy modules
+#module use /home/modules/energy/modules/all
 
 ########################
 # SECTION 3
@@ -76,7 +79,7 @@ source ~/.config/shell/dircolors
  alias jobdirs='squeue --me -o "%.18i  %.9P    %.30j   %.V    %.10M   %Z "'
  alias jobcommands='squeue --me -o "%.18i  %.9P    %.30j   %.V    %.10M   %o "'
  alias jobendtimes='squeue --me -o "%.18i  %.9P    %.30j   %.V    %.10M   %e "| sort -k6 -r '
- alias gpuq='squeue -p a100,a100_week,sm3090el8,sm3090el8_768 -o "%.18i  %.9P    %.40j   %.8u   %.V     %.10M   %.9l    %.6D  %.6C  %R      %S     %Q" '
+ alias gpuq='squeue -p a100,a100_week,sm3090el8,sm3090el8_768,sm3090_devel -o "%.18i  %.9P    %.40j   %.8u   %.V     %.10M   %.9l    %.6D  %.6C  %R      %S     %Q" '
  alias aq='squeue -A catvip -o "%.18i  %.9P    %.30j   %.8u    %.V     %.10M   %.9l    %.6D    %R      %S"'
  alias qinfo='sinfo -S+P -o "%18P %8a %20F"'
  alias priorities='squeue -o "%.18i  %.9P    %.30j    %.8u    %.V     %.10M   %.9l    %.6D    %R    %Q"'
@@ -96,7 +99,6 @@ source ~/.config/shell/dircolors
  alias sbv='sbatch vasp.sh'
 
  alias sbc='sbatch cpmd.sh'
- alias sbg='sbatch gaussian.sh'
  alias hillsheader='cat $WORK/Templates/plot/HILLS HILLS > HILLS.dat'
 
  #alias sba='sbatch ase.sh'
@@ -107,7 +109,7 @@ source ~/.config/shell/dircolors
 #####################################################################
 _venvnames='venv0 venvtest dipolarPoisson ase322venv'
 complete -W "${_venvnames}" 'activate'
-_partitions='xeon24el8_test xeon56 xeon40el8 epyc96 sm3090el8 a100'
+_partitions='xeon24el8_test xeon56 xeon40el8 epyc96 sm3090el8 a100 sm3090_devel'
 complete -W "${_partitions}" 'squeue'
 _plumed() { eval "$(plumed --no-mpi completion 2>/dev/null)";}
 complete -F _plumed -o default plumed
@@ -334,6 +336,8 @@ function NEBcnt() {
 	sbatch vasp.sh
 }
 function MLNEBcnt() {
+	sed -i 's/linear/MLNEB_old.traj/' mlneb.py
+	sed -i 's/idpp/MLNEB_old.traj/' mlneb.py
 	mv MLNEB.traj MLNEB_old.traj
 	ls mlneb_summary* | tac | while read f;do cp $f $f.old ;done
 	sbatch ase.sh
@@ -390,6 +394,10 @@ function create_mlnebdir() {
 }
 function get_path_electrons() {
 	grep found path*txt | tac | sort -u -t. -k1,1 | gawk 'gsub("_[0-9].[0-9]{2}.txt:Potential","") gsub("path_","") {print $1 " " $8}' | sort -V
+}
+
+function traj_energy() {
+	 ase ulm $1 | grep energy | gawk -F'[:*,]' '{print $2}'
 }
 
 # Uncomment the following line if you don't like systemctl's auto-paging feature:
