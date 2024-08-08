@@ -104,6 +104,7 @@ source ~/.config/shell/dircolors
  #alias sba='sbatch ase.sh'
  alias nebplot='python3 ~/gpaw/scripts/nebplot.py'
  alias makenebgif='python3 ~/gpaw/scripts/makenebgif.py'
+ alias deac='deactivate'
 #####################################################################
 # ****                       COMPLETION                          ****
 #####################################################################
