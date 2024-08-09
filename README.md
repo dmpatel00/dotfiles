@@ -1,4 +1,4 @@
-#My dotfiles on niflheim and mac.
+# My dotfiles on niflheim and mac.
 
 - Some of these must be deployed using symlinks in ~/
 - Proper colors requires gls from coreutils
