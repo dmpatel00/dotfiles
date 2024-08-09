@@ -1,8 +1,0 @@
-****************************************
-Short helpfile for action EXTRACV
-****************************************
-
-The following arguments are compulsory: 
-
-                   NAME - name of the CV as computed by the MD engine 
-
