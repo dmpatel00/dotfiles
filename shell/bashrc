@@ -76,15 +76,17 @@ source ~/.config/shell/dircolors
 # alias m="more"
 # alias bls='/bin/ls'   # handy alias for listing a large directory.
  alias uq='squeue --me -o "%.18i  %.9P    %.40j   %.V     %.10M   %.9l    %.6D  %.6C  %R      %S     %Q"'
- alias jobdirs='squeue --me -o "%.18i  %.9P    %.30j   %.V    %.10M   %Z "'
+ alias jobdirs='squeue --me -o "%.18i  %.9P    %.40j   %.V    %.10M   %Z "'
  alias jobcommands='squeue --me -o "%.18i  %.9P    %.30j   %.V    %.10M   %o "'
  alias jobendtimes='squeue --me -o "%.18i  %.9P    %.30j   %.V    %.10M   %e "| sort -k6 -r '
- alias gpuq='squeue -p a100,a100_week,sm3090el8,sm3090el8_768,sm3090_devel -o "%.18i  %.9P    %.40j   %.8u   %.V     %.10M   %.9l    %.6D  %.6C  %R      %S     %Q" '
- alias aq='squeue -A catvip -o "%.18i  %.9P    %.30j   %.8u    %.V     %.10M   %.9l    %.6D    %R      %S"'
+ alias gpuq='squeue -p a100,a100_week,sm3090el8,sm3090el8_768,sm3090_devel -o "%.18i  %.9P    %.40j   %.8u   %.V     %.10M   %.9l    %.6D  %.6C %b %R      %S     %Q" '
+ alias aq='squeue -A catvip,catstud,catgst -o "%.18i  %.9P    %.30j   %.8u    %.V     %.10M   %.9l    %.6D    %R      %S"'
  alias qinfo='sinfo -S+P -o "%18P %8a %20F"'
  alias priorities='squeue -o "%.18i  %.9P    %.30j    %.8u    %.V     %.10M   %.9l    %.6D    %R    %Q"'
  alias showcpu='showuserlimits | grep cpu'
  alias nodestatus='pestat -u $USER -N'
+ function jcd() { cd $(jobdirs | grep $1 | awk '{print $6}'); }
+ alias jobpaths='sacct --long --json | jq  -r ".jobs[]| [.job_id, .name, .partition, .working_directory, .state.current[] ]|@tsv"'
 
  alias bohr='printf "1.88972613\n"'
  alias hartree='printf "27.21139\n"'
@@ -105,15 +107,45 @@ source ~/.config/shell/dircolors
  alias nebplot='python3 ~/gpaw/scripts/nebplot.py'
  alias makenebgif='python3 ~/gpaw/scripts/makenebgif.py'
  alias deac='deactivate'
+ alias iso="python3 -m ase.visualize.mlab -C gpaw"
+
 #####################################################################
 # ****                       COMPLETION                          ****
 #####################################################################
-_venvnames='venv0 venvtest dipolarPoisson ase322venv'
+_venvnames='venv0 venvtest dipolarPoisson ase322venv dev-venv'
 complete -W "${_venvnames}" 'activate'
 _partitions='xeon24el8_test xeon56 xeon40el8 epyc96 sm3090el8 a100 sm3090_devel'
 complete -W "${_partitions}" 'squeue'
 _plumed() { eval "$(plumed --no-mpi completion 2>/dev/null)";}
 complete -F _plumed -o default plumed
+_tb_completion() {
+    local IFS=$'\n'
+    local response
+
+    response=$(env COMP_WORDS="${COMP_WORDS[*]}" COMP_CWORD=$COMP_CWORD _TB_COMPLETE=bash_complete $1)
+
+    for completion in $response; do
+        IFS=',' read type value <<< "$completion"
+
+        if [[ $type == 'dir' ]]; then
+            COMPREPLY=()
+            compopt -o dirnames
+        elif [[ $type == 'file' ]]; then
+            COMPREPLY=()
+            compopt -o default
+        elif [[ $type == 'plain' ]]; then
+            COMPREPLY+=($value)
+        fi
+    done
+
+    return 0
+}
+
+_tb_completion_setup() {
+    complete -o nosort -F _tb_completion tb
+}
+
+_tb_completion_setup;
 
 #####################################################################
 # ****                       FUNCTIONS                           ****
@@ -343,7 +375,9 @@ function MLNEBcnt() {
 	ls mlneb_summary* | tac | while read f;do cp $f $f.old ;done
 	sbatch ase.sh
 }
-
+function view_mlneb_path() {
+	ase gui MLNEB.traj@-`grep -m1 n_images= mlneb.py | awk -F '=' '{print $2}'`: &
+}
 function hills_sum() {
  /work2/06027/dmpatel/stampede2/plumed/bin/plumed sum_hills --hills HILLS.dat --mintozero --stride $1 --kt .00094997
 }
@@ -373,20 +407,26 @@ function vibsum() {
 	energy=`printf $freqs | gawk '{print .5*$1/1000}'`
 	echo $energy
 }
-
 function traj_to_vasp() {
-	ase convert -f -n -1 *traj ${1:-temp}.vasp
+	ase convert -f -n -1 ${2:*.traj} ${1:-temp}.vasp
 }
-
 function activate() {
 	source ~/$1/bin/activate
 }
 function quickplot() {
 	gnuplot -e "plot '$1' u 1:2; pause mouse"
 }
-
+function correlate() {
+	gnuplot -e "stats '$1' u 1:2"
+}
 function create_mlnebdir() {
-	for dir in $(seq 2.40 0.5 4.40);
+	for dir in $(seq 2.40 0.25 3.15);
+		do mkdir pot_$dir
+		cp mlneb.py pot_$dir
+		cp ase.sh pot_$dir
+		sed -i "s/\-J.*$/&_$dir/" pot_$dir/ase.sh
+	done
+	for dir in $(seq 3.40 0.5 4.40);
 		do mkdir pot_$dir
 		cp mlneb.py pot_$dir
 		cp ase.sh pot_$dir
@@ -396,7 +436,9 @@ function create_mlnebdir() {
 function get_path_electrons() {
 	grep found path*txt | tac | sort -u -t. -k1,1 | gawk 'gsub("_[0-9].[0-9]{2}.txt:Potential","") gsub("path_","") {print $1 " " $8}' | sort -V
 }
-
+function get_energy_electrons() {
+	paste <(ase ulm $1 | grep energy | awk '{print $2}') <(ase ulm $1 | grep parameters | sed 's/[{,\,]/\n/g' | grep excess | awk '{print $2}')
+}
 function traj_energy() {
 	 ase ulm $1 | grep energy | gawk -F'[:*,]' '{print $2}'
 }
@@ -404,3 +446,22 @@ function traj_energy() {
 # Uncomment the following line if you don't like systemctl's auto-paging feature:
 # export SYSTEMD_PAGER=
 
+## Autoloading venv on epyc96 node
+if [[ "$CPU_ARCH" == "epyc9004" ]]
+then
+	activate venv0
+fi
+
+if [[ "$CPU_ARCH" == "broadwell_el8" ]]
+then
+	activate dev-venv
+fi
+
+if [[ "$CPU_ARCH" == "icelake" ]]
+then
+	activate bin/venv-asrlib
+fi
+if [[ "$TERM" == "xterm-kitty" ]]
+then
+	export TERM=xterm
+fi
